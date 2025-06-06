@@ -63,8 +63,9 @@
       z-index: -1; // Keep it behind the form
 
       @media (max-width: 1024px) {
+        justify-content: center;
+        justify-items: center;
         // Hide on smaller screens to avoid overlap
-        display: none;
       }
     }
 
