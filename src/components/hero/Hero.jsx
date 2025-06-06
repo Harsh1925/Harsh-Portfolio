@@ -49,9 +49,26 @@ const Hero = () => {
           animate="animate"
         >
           <motion.h2 variants={textVariants}>Harsh Modi</motion.h2>
-          <motion.h1 variants={textVariants}>Full Stack</motion.h1>
-          <motion.h1 className="new1" variants={textVariants}>
-            {" "}
+          <motion.h1
+            style={{
+              marginTop: 70,
+              marginBottom: 20,
+              lineHeight: 0,
+            }}
+            variants={textVariants}
+          >
+            Full Stack
+          </motion.h1>
+          <motion.h1
+            variants={textVariants}
+            style={{
+              whiteSpace: "nowrap",
+              display: "inline-block",
+              marginTop: 20,
+              marginBottom: 30,
+              padding: 0,
+            }}
+          >
             Web Developer
           </motion.h1>
           <motion.div className="buttons" variants={textVariants}>

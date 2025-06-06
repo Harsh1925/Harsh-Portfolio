@@ -1,3 +1,6 @@
+// Import a responsive-friendly font
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap");
+
 html {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -22,98 +25,12 @@ a {
 
 section {
   height: 100vh;
-  scroll-snap-type: center;
+  scroll-snap-align: start; // More compatible property
 }
 
-/* Responsive adjustments for your portfolio (Global)
-   Add this at the bottom of your existing SCSS files or in a new responsive.scss and import it */
-
-@media (max-width: 1280px) {
-  .portfolio .container .wrapper {
-    flex-direction: column;
-    text-align: center;
-    padding: 0 20px;
-  }
-  .portfolio .container .wrapper .imageContainer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  .portfolio .container .wrapper .imageContainer img {
-    width: 60%;
-    height: auto;
-  }
-  .portfolio .container .wrapper .textContainer {
-    width: 100%;
-    text-align: center;
-  }
-  .portfolio .container .wrapper .textContainer h2 {
-    font-size: 26px;
-  }
-  .portfolio .container .wrapper .textContainer p {
-    font-size: 14px;
-  }
-}
-
+// Media Query for tablets and smaller devices
 @media (max-width: 768px) {
-  .portfolio .container .wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-  .portfolio .container .wrapper .imageContainer img {
-    width: 80%;
-    height: auto;
-  }
-  .portfolio .container .wrapper .textContainer h2 {
-    font-size: 24px;
-  }
-  .portfolio .container .wrapper .textContainer p {
-    font-size: 13px;
+  html {
+    scroll-snap-type: none; // Disable snap scrolling on mobile for better UX
   }
 }
-
-@media (max-width: 480px) {
-  .portfolio .container .wrapper .imageContainer img {
-    width: 100%;
-    height: auto;
-  }
-  .portfolio .container .wrapper .textContainer {
-    text-align: left;
-  }
-  .portfolio .container .wrapper .textContainer h2 {
-    font-size: 20px;
-  }
-  .portfolio .container .wrapper .textContainer p {
-    font-size: 12px;
-  }
-  .portfolio .container .wrapper .textContainer button {
-    width: 120px;
-    padding: 8px;
-    font-size: 12px;
-  }
-}
-
-/* Force image left and text right for large screens */
-@media (min-width: 1281px) {
-  .portfolio .container .wrapper {
-    flex-direction: row;
-    gap: 30px;
-  }
-  .portfolio .container .wrapper .imageContainer {
-    flex: 1;
-    max-width: 45%;
-  }
-  .portfolio .container .wrapper .textContainer {
-    flex: 1;
-    max-width: 50%;
-    text-align: left;
-  }
-  .portfolio .container .wrapper .imageContainer img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-}
-
-/* Import this file in your app.scss */
-/* @import "./responsive.scss" */

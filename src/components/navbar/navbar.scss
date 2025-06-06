@@ -1,26 +1,36 @@
-.navbar{
-    height: 100px;
+@use "../../app.scss" as *;
 
-    .wrapper{
-        max-width: 1230px;
-        margin: auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 100%;
+.navbar {
+  height: 100px;
 
-        span{
-            font-weight: bold;
-        }
+  .wrapper {
+    max-width: 1366px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 20px; // Add some horizontal padding
 
-        .social{
-            display: flex;
-            gap: 20px;
-
-            img{
-                width: 18px;
-                height: 18px;
-            }
-        }
+    span {
+      font-weight: bold;
+      @media (max-width: 738px) {
+        display: none; // Hide name on small screens
+      }
     }
+
+    .social {
+      display: flex;
+      gap: 20px;
+
+      @media (max-width: 738px) {
+        display: none; // Hide social icons as they're in the sidebar
+      }
+
+      img {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
 }
