@@ -6,7 +6,7 @@
   margin: auto;
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 10px;
 
   // Media query for tablets
   @media (max-width: 1024px) {
@@ -20,8 +20,8 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 40px;
-    margin-left: 5%;
+    gap: 50px;
+    margin-left: 8%;
 
     @media (max-width: 1024px) {
       gap: 20px;
@@ -39,7 +39,12 @@
       }
     }
 
+    h2 {
+      font-size: 30px;
+    }
+
     span {
+      font-size: 20px;
       font-weight: 300;
     }
   }
@@ -73,6 +78,8 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      margin-top: 50px;
+      margin-right: 70px;
 
       input,
       textarea {
