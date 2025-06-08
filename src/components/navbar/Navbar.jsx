@@ -12,7 +12,7 @@ const Navbar = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          Harsh Modi
+          <span className="site-name">Harsh Modi</span>
         </motion.span>
         <div className="social">
           <a href="https://www.instagram.com/__harsh__007/">

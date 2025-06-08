@@ -16,6 +16,7 @@ html {
 body {
   background-color: #0c0c1d;
   color: lightgray;
+  overflow-x: hidden;
 }
 
 a {
@@ -25,12 +26,36 @@ a {
 
 section {
   height: 100vh;
-  scroll-snap-align: start; // More compatible property
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; // More compatible property
 }
 
-// Media Query for tablets and smaller devices
+/* Mobile-first responsive adjustments */
+@media (max-width: 1024px) {
+  section {
+    padding: 0 4vw;
+  }
+}
+
 @media (max-width: 768px) {
   html {
-    scroll-snap-type: none; // Disable snap scrolling on mobile for better UX
+    scroll-snap-type: none; // Disable snap scrolling on mobile
+  }
+
+  section {
+    height: auto; // Let sections grow as needed
+    padding: 4vh 5vw;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  section {
+    padding: 5vh 4vw;
   }
 }

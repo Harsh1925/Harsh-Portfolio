@@ -11,12 +11,12 @@ const Parallax = () => {
   });
 
   const yText = useTransform(scrollYProgress, [0, 1], ["0%", "500%"]);
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "115%"]);
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "215%"]);
 
   return (
     <div
       className="parallax"
-      style={{ background: "linear-gradient(100deg, #111132, #0c0c1d" }}
+      style={{ background: "linear-gradient(100deg, #111132, #0c0c1d)" }}
     >
       <motion.h1 style={{ y: yText }}>Coding Projects</motion.h1>
       <motion.div className="mountains"></motion.div>
