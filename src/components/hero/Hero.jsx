@@ -38,6 +38,63 @@ const sliderVariants = {
   },
 };
 
+let autoScrollActive = false;
+
+const handleAutoScroll = () => {
+  const html = document.documentElement;
+  const scrollStep = 120; // increase step for speed
+  let userScrolled = false;
+
+  if (autoScrollActive) return; // Prevent multiple triggers
+  autoScrollActive = true;
+
+  // Cancel scroll on user interaction
+  const cancelOnUserScroll = () => {
+    userScrolled = true;
+    autoScrollActive = false;
+    html.style.scrollSnapType = "y mandatory";
+    removeListeners();
+  };
+
+  const removeListeners = () => {
+    window.removeEventListener("wheel", cancelOnUserScroll);
+    window.removeEventListener("touchstart", cancelOnUserScroll);
+  };
+
+  // Temporarily disable scroll snap
+  html.style.scrollSnapType = "none";
+  window.addEventListener("wheel", cancelOnUserScroll, { passive: true });
+  window.addEventListener("touchstart", cancelOnUserScroll, { passive: true });
+
+  const scrollDown = () => {
+    if (userScrolled) return;
+
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const currentScroll = window.scrollY;
+
+    if (currentScroll + window.innerHeight < maxScroll - 1) {
+      window.scrollBy(0, scrollStep);
+      requestAnimationFrame(scrollDown);
+    } else {
+      scrollBackToTop();
+    }
+  };
+
+  const scrollBackToTop = () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 0) {
+      window.scrollBy(0, -scrollStep * 1.5); // scroll up slightly faster
+      requestAnimationFrame(scrollBackToTop);
+    } else {
+      autoScrollActive = false;
+      html.style.scrollSnapType = "y mandatory";
+      removeListeners();
+    }
+  };
+
+  requestAnimationFrame(scrollDown);
+};
+
 const Hero = () => {
   return (
     <div className="hero">
@@ -49,6 +106,7 @@ const Hero = () => {
           animate="animate"
         >
           <motion.h2 variants={textVariants}>Harsh Modi</motion.h2>
+
           <motion.h1
             style={{
               marginTop: 70,
@@ -59,32 +117,43 @@ const Hero = () => {
           >
             Full Stack
           </motion.h1>
+
           <motion.h1
             variants={textVariants}
             style={{
               whiteSpace: "nowrap",
               display: "inline-block",
               marginTop: 20,
-              marginBottom: 30,
+              marginBottom: 10,
               padding: 0,
             }}
           >
             Web Developer
           </motion.h1>
+
           <motion.div className="buttons" variants={textVariants}>
-            <motion.button variants={textVariants}>
-              See the Latest Works
-            </motion.button>
-            <motion.button variants={textVariants}>Contact Me</motion.button>
+            <a href="#Portfolio">
+              <motion.button variants={textVariants}>
+                See the Latest Works
+              </motion.button>
+            </a>
+            <a href="#Contact">
+              <motion.button variants={textVariants}>Contact Me</motion.button>
+            </a>
           </motion.div>
-          <motion.img
+
+          <motion.div
+            className="scrollIcon"
+            onClick={handleAutoScroll}
+            style={{ cursor: "pointer" }}
             variants={textVariants}
             animate="scrollButton"
-            src="scroll.png"
-            alt=""
-          />
+          >
+            <img src="scroll.png" alt="Scroll Down" />
+          </motion.div>
         </motion.div>
       </div>
+
       <motion.div
         className="slidingTextContainer"
         variants={sliderVariants}
@@ -93,8 +162,9 @@ const Hero = () => {
       >
         Master Graduate MERN Stack Developer
       </motion.div>
+
       <div className="imageContainer">
-        <img src="hero.png" alt=""></img>
+        <img src="hero.png" alt="hero" />
       </div>
     </div>
   );
