@@ -1,7 +1,16 @@
 /* eslint-disable react/jsx-key */
 import "./about.scss";
 import { motion } from "framer-motion";
-import { FaReact, FaNodeJs, FaAws, FaDatabase, FaGithub } from "react-icons/fa";
+import {
+  FaReact,
+  FaNodeJs,
+  FaAws,
+  FaDatabase,
+  FaGithub,
+  FaHtml5,
+  FaCss3Alt,
+  FaPython,
+} from "react-icons/fa";
 import { DiMongodb } from "react-icons/di";
 import { SiTailwindcss, SiExpress } from "react-icons/si";
 import { IoLogoJavascript } from "react-icons/io";
@@ -61,23 +70,29 @@ const About = () => {
       <div className="cardWrapper">
         {cards.map((card, index) => (
           <motion.div
-            className="card"
+            className="floatingWrapper"
             key={index}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
+            animate={{ y: [0, -20, 0] }} // ⬅️ more vertical motion
+            transition={{
+              duration: 2, // ⬅️ faster float
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: index * 0.3,
+            }}
           >
-            <div className="cardInner">
-              <div className="cardFront">
-                <h2>{card.title}</h2>
-              </div>
-              <div className="cardBack">
-                <div className="content">
-                  <p>{card.description}</p>
-                  <div className="tech-icons">
-                    {card.icons.map((Icon, i) => (
-                      <span key={i}>{Icon}</span>
-                    ))}
+            <div className="card">
+              <div className="cardInner">
+                <div className="cardFront">
+                  <h2>{card.title}</h2>
+                </div>
+                <div className="cardBack">
+                  <div className="content">
+                    <p>{card.description}</p>
+                    <div className="tech-icons">
+                      {card.icons.map((Icon, i) => (
+                        <span key={i}>{Icon}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
