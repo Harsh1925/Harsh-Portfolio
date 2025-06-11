@@ -1,27 +1,41 @@
 /* eslint-disable react/jsx-key */
 import "./about.scss";
 import { motion } from "framer-motion";
-import { FaReact, FaNodeJs, FaAws, FaDatabase } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaAws, FaDatabase, FaGithub } from "react-icons/fa";
 import { DiMongodb } from "react-icons/di";
+import { SiTailwindcss, SiExpress } from "react-icons/si";
+import { IoLogoJavascript } from "react-icons/io";
 
 const cards = [
   {
     title: "Who I Am",
     description:
       "I’m Harsh Modi, a full-stack developer passionate about secure, scalable web apps. With a 3.97 GPA in MS CS at Pace University, I’ve led projects with advanced tech stacks and real-world impact.",
-    icons: [<FaReact />, <FaNodeJs />, <FaDatabase />, <FaAws />],
+    icons: [<FaReact />, <FaGithub />, <FaNodeJs />, <FaDatabase />, <FaAws />],
   },
   {
     title: "Experience",
     description:
       "Worked at Sensegood as a web development intern, enhancing UI with ReactJS and improving user engagement by 15%. Built and deployed several production-grade apps using MERN stack.",
-    icons: [<FaReact />, <DiMongodb />, <FaNodeJs />],
+    icons: [
+      <FaReact />,
+      <DiMongodb />,
+      <FaNodeJs />,
+      <SiExpress />,
+      <SiTailwindcss />,
+    ],
   },
   {
     title: "Expertise",
     description:
       "Proficient in full-stack development using MERN, REST APIs, Prisma ORM, CI/CD (Jenkins), and AWS. Skilled in agile methodology and real-time features like chat & auth.",
-    icons: [<FaReact />, <FaAws />, <FaDatabase />],
+    icons: [
+      <FaReact />,
+      <FaAws />,
+      <FaNodeJs />,
+      <FaDatabase />,
+      <IoLogoJavascript />,
+    ],
   },
 ];
 
