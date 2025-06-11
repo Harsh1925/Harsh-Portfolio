@@ -1,40 +1,26 @@
 import "./hero.scss";
 import { motion } from "framer-motion";
+import resumePdf from "./Harsh_Modi_Resume.pdf";
 
 const textVariants = {
-  initial: {
-    x: -500,
-    opacity: 0,
-  },
+  initial: { x: -500, opacity: 0 },
   animate: {
     x: 0,
     opacity: 1,
-    transition: {
-      duration: 1,
-      staggerChildren: 0.1,
-    },
+    transition: { duration: 1, staggerChildren: 0.1 },
   },
   scrollButton: {
     opacity: 0,
     y: 10,
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-    },
+    transition: { duration: 2, repeat: Infinity },
   },
 };
 
 const sliderVariants = {
-  initial: {
-    x: 0,
-  },
+  initial: { x: 0 },
   animate: {
     x: "-220%",
-    transition: {
-      repeat: Infinity,
-      repeatType: "mirror",
-      duration: 20,
-    },
+    transition: { repeat: Infinity, repeatType: "mirror", duration: 20 },
   },
 };
 
@@ -42,13 +28,12 @@ let autoScrollActive = false;
 
 const handleAutoScroll = () => {
   const html = document.documentElement;
-  const scrollStep = 120; // increase step for speed
+  const scrollStep = 120;
   let userScrolled = false;
 
-  if (autoScrollActive) return; // Prevent multiple triggers
+  if (autoScrollActive) return;
   autoScrollActive = true;
 
-  // Cancel scroll on user interaction
   const cancelOnUserScroll = () => {
     userScrolled = true;
     autoScrollActive = false;
@@ -61,17 +46,14 @@ const handleAutoScroll = () => {
     window.removeEventListener("touchstart", cancelOnUserScroll);
   };
 
-  // Temporarily disable scroll snap
   html.style.scrollSnapType = "none";
   window.addEventListener("wheel", cancelOnUserScroll, { passive: true });
   window.addEventListener("touchstart", cancelOnUserScroll, { passive: true });
 
   const scrollDown = () => {
     if (userScrolled) return;
-
     const maxScroll = document.body.scrollHeight - window.innerHeight;
     const currentScroll = window.scrollY;
-
     if (currentScroll + window.innerHeight < maxScroll - 1) {
       window.scrollBy(0, scrollStep);
       requestAnimationFrame(scrollDown);
@@ -83,7 +65,7 @@ const handleAutoScroll = () => {
   const scrollBackToTop = () => {
     const currentScroll = window.scrollY;
     if (currentScroll > 0) {
-      window.scrollBy(0, -scrollStep * 1.5); // scroll up slightly faster
+      window.scrollBy(0, -scrollStep * 1.5);
       requestAnimationFrame(scrollBackToTop);
     } else {
       autoScrollActive = false;
@@ -108,11 +90,7 @@ const Hero = () => {
           <motion.h2 variants={textVariants}>Harsh Modi</motion.h2>
 
           <motion.h1
-            style={{
-              marginTop: 70,
-              marginBottom: 20,
-              lineHeight: 0,
-            }}
+            style={{ marginTop: 70, marginBottom: 20, lineHeight: 0 }}
             variants={textVariants}
           >
             Full Stack
@@ -125,7 +103,6 @@ const Hero = () => {
               display: "inline-block",
               marginTop: 20,
               marginBottom: 10,
-              padding: 0,
             }}
           >
             Web Developer
@@ -139,6 +116,11 @@ const Hero = () => {
             </a>
             <a href="#Contact">
               <motion.button variants={textVariants}>Contact Me</motion.button>
+            </a>
+            <a href={resumePdf} download>
+              <motion.button variants={textVariants}>
+                Download Resume
+              </motion.button>
             </a>
           </motion.div>
 

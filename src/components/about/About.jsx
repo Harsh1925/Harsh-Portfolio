@@ -1,16 +1,7 @@
 /* eslint-disable react/jsx-key */
 import "./about.scss";
 import { motion } from "framer-motion";
-import {
-  FaReact,
-  FaNodeJs,
-  FaAws,
-  FaDatabase,
-  FaGithub,
-  FaHtml5,
-  FaCss3Alt,
-  FaPython,
-} from "react-icons/fa";
+import { FaReact, FaNodeJs, FaAws, FaDatabase, FaGithub } from "react-icons/fa";
 import { DiMongodb } from "react-icons/di";
 import { SiTailwindcss, SiExpress } from "react-icons/si";
 import { IoLogoJavascript } from "react-icons/io";
