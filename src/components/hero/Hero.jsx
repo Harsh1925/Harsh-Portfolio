@@ -142,7 +142,7 @@ const Hero = () => {
         initial="initial"
         animate="animate"
       >
-        Master Graduate MERN Stack Developer
+        Full-Stack Software Engineer | Real-time Systems & APIs
       </motion.div>
 
       <div className="imageContainer">

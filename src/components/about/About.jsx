@@ -10,13 +10,13 @@ const cards = [
   {
     title: "Who I Am",
     description:
-      "I’m Harsh Modi, a full-stack developer passionate about secure, scalable web apps. With a 3.97 GPA in MS CS at Pace University, I’ve led projects with advanced tech stacks and real-world impact.",
+      "I’m Harsh Modi, a full-stack Software Engineer focused on scalable APIs, real-time systems, and clean developer experience. I enjoy taking products from idea to production and balancing performance, reliability, and simplicity.",
     icons: [<FaReact />, <FaGithub />, <FaNodeJs />, <FaDatabase />, <FaAws />],
   },
   {
     title: "Experience",
     description:
-      "Worked at Sensegood as a web development intern, enhancing UI with ReactJS and improving user engagement by 15%. Built and deployed several production-grade apps using MERN stack.",
+      "I ship production features as a Software Engineer at Shoptaki, where I built a local-first messaging microservice, hardened APIs, and Dockerized a multi-service stack. Before that, I interned at Sensegood, improving performance and accessibility in real-world React apps.",
     icons: [
       <FaReact />,
       <DiMongodb />,
