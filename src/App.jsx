@@ -19,7 +19,7 @@ const App = () => {
       <section id="About Me">
         <Parallax1 />
       </section>
-      <section>
+      <section className="aboutSection">
         <About />
       </section>
       <section id="Projects">

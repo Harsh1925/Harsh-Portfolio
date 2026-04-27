@@ -9,11 +9,14 @@ const highlights = [
   {
     title: "Who I Am",
     description: (
-  <>
-    Hello, my name is Harsh Modi, and I am a Full Stack Software Engineer <br /> dedicated to building high-scale, secure, and user-centric systems. <br />
-    I am currently pursuing my Master of Science in Computer Science at Pace University in New York, <br /> building upon my Bachelor of Technology in Computer Science from Ahmedabad University.
-  </>
-),
+      <>
+        Hello, my name is Harsh Modi, and I am a Full Stack Software Engineer
+        dedicated to building high-scale, secure, and user-centric systems. I am
+        currently pursuing my Master of Science in Computer Science at Pace
+        University in New York, building upon my Bachelor of Technology in
+        Computer Science from Ahmedabad University.
+      </>
+    ),
     icons: [
       { id: "react", icon: <FaReact /> },
       { id: "github", icon: <FaGithub /> },
@@ -24,10 +27,15 @@ const highlights = [
   },
   {
     title: "Expertise",
-    description:(
-  <>
-      My technical toolkit is broad, spanning languages such as JavaScript, Python and Go, <br />to modern frameworks like React.js and Django, as well as infrastructure tools like Docker and Kubernetes.<br /> Proficient in full-stack development using MERN, REST APIs, Prisma ORM, CI/CD (Jenkins), and AWS. </>
-),
+    description: (
+      <>
+        My technical toolkit is broad, spanning languages such as JavaScript,
+        Python and Go, to modern frameworks like React.js and Django, as well as
+        infrastructure tools like Docker and Kubernetes. Proficient in
+        full-stack development using MERN, REST APIs, Prisma ORM, CI/CD
+        (Jenkins), and AWS.
+      </>
+    ),
     icons: [
       { id: "react", icon: <FaReact /> },
       { id: "aws", icon: <FaAws /> },
@@ -44,7 +52,7 @@ const experience = [
     company: "Shoptaki",
     summary:
       "architect and deploy a high-performance, local-first messaging microservice capable of sustaining massive message throughput while ensuring future-proof security through Post-Quantum Cryptography (PQC).",
-    stack: ["Node.js", "Express.js", "Socket.IO", "Docker", "APIs", "Realtime"],
+    stack: ["Node.js", "Express.js", "Socket.IO", "Docker", "APIs"],
   },
   {
     role: "Software Developer",
@@ -91,6 +99,7 @@ const About = () => {
                     <h2>{card.title}</h2>
                   </div>
                   <div className="cardBack">
+                    <h3>{card.title}</h3>
                     <p>{card.description}</p>
                     <div className="tech-icons">
                       {card.icons.map((item) => (
@@ -133,13 +142,13 @@ const About = () => {
             ))}
           </div>
 
-          <div className="skillsBar">
+          {/* <div className="skillsBar">
             <span><FaReact /> React</span>
             <span><DiMongodb /> MongoDB</span>
             <span><FaNodeJs /> Node.js</span>
             <span><SiExpress /> Express</span>
             <span><SiTailwindcss /> Tailwind</span>
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </section>
