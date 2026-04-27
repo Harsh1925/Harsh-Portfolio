@@ -1,8 +1,6 @@
-import { desc, img } from "framer-motion/client";
 import "./portfolio.scss";
 import {
   motion,
-  progress,
   useScroll,
   useSpring,
   useTransform,
@@ -70,6 +68,7 @@ const Single = ({ item }) => {
     </section>
   );
 };
+
 const Portfolio = () => {
   const ref = useRef();
 
@@ -85,7 +84,7 @@ const Portfolio = () => {
   });
 
   return (
-    <div className="portfolio" ref={ref}>
+    <div className="portfolio" id="Portfolio">
       <div className="progress">
         <h1>Featured Works</h1>
         <motion.div style={{ scaleX }} className="progressBar"></motion.div>
