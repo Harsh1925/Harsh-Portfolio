@@ -1,9 +1,34 @@
 @use "../../app.scss" as *;
 
 .navbar {
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  --pointer-opacity: 0;
   height: 100px;
   width: 100%;
   top: 0;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  isolation: isolate;
+  background: #090b1b;
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    width: 18rem;
+    height: 18rem;
+    left: var(--pointer-x);
+    top: var(--pointer-y);
+    border-radius: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    background: radial-gradient(circle, rgba(117, 207, 255, 0.14) 0%, rgba(139, 92, 246, 0.08) 42%, transparent 70%);
+    filter: blur(12px);
+    opacity: var(--pointer-opacity);
+    pointer-events: none;
+    transition: opacity 180ms ease-out;
+  }
 
   .wrapper {
     max-width: 1366px;
@@ -13,6 +38,8 @@
     justify-content: space-between;
     height: 100%;
     padding: 0 5vw;
+    position: relative;
+    z-index: 1;
 
     span {
       font-weight: bold;
@@ -48,6 +75,12 @@
       @media (max-width: 738px) {
         display: none;
       }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+    &::after {
+      display: none;
     }
   }
 }

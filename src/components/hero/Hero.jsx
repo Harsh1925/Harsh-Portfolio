@@ -78,8 +78,25 @@ const handleAutoScroll = () => {
 };
 
 const Hero = () => {
+  const updatePointerGlow = (event) => {
+    if (event.pointerType === "touch") return;
+
+    const { left, top } = event.currentTarget.getBoundingClientRect();
+    event.currentTarget.style.setProperty("--pointer-x", `${event.clientX - left}px`);
+    event.currentTarget.style.setProperty("--pointer-y", `${event.clientY - top}px`);
+    event.currentTarget.style.setProperty("--pointer-opacity", "1");
+  };
+
+  const hidePointerGlow = (event) => {
+    event.currentTarget.style.setProperty("--pointer-opacity", "0");
+  };
+
   return (
-    <div className="hero">
+    <div
+      className="hero"
+      onPointerMove={updatePointerGlow}
+      onPointerLeave={hidePointerGlow}
+    >
       <div className="wrapper">
         <motion.div
           className="textContainer"

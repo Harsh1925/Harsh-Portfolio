@@ -1,12 +1,36 @@
 @use "../../app.scss" as *;
 
 .hero {
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  --pointer-opacity: 0;
   height: calc(100vh - 100px);
   overflow: hidden;
-  background: linear-gradient(180deg, #0c0c1d, #111132);
+  background:
+    radial-gradient(58% 68% at 78% 78%, rgba(92, 89, 236, 0.16), transparent 68%),
+    radial-gradient(42% 52% at 14% 76%, rgba(117, 207, 255, 0.1), transparent 72%),
+    linear-gradient(180deg, #090b1b 0%, #0b0e20 24%, #10132d 100%);
   position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    width: 24rem;
+    height: 24rem;
+    left: var(--pointer-x);
+    top: var(--pointer-y);
+    border-radius: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    background: radial-gradient(circle, rgba(117, 207, 255, 0.18) 0%, rgba(139, 92, 246, 0.1) 38%, transparent 70%);
+    filter: blur(14px);
+    opacity: var(--pointer-opacity);
+    pointer-events: none;
+    transition: opacity 180ms ease-out;
+  }
 
   .wrapper {
     max-width: 1366px;
@@ -16,6 +40,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    z-index: 1;
 
     @media (max-width: 1024px) {
       flex-direction: column;
@@ -31,6 +57,7 @@
       justify-content: center;
       gap: 40px;
       padding-left: 10%;
+      margin-bottom: 4%;
 
       @media (max-width: 1024px) {
         width: 100%;
@@ -43,7 +70,7 @@
 
       h2 {
         font-size: 30px;
-        color: rebeccapurple;
+        color: #a78bfa;
         letter-spacing: 10px;
 
         @media (max-width: 768px) {
@@ -54,6 +81,8 @@
 
       h1 {
         font-size: 88px;
+        color: #f8fbff;
+        letter-spacing: -0.025em;
 
         @media (max-width: 768px) {
           font-size: 40px;
@@ -84,13 +113,14 @@
 
         button {
           padding: 15px 20px;
-          border: 1px solid white;
+          border: 1px solid rgba(191, 219, 254, 0.82);
           border-radius: 10px;
-          background-color: transparent;
-          color: white;
+          background-color: rgba(15, 23, 52, 0.44);
+          color: #eff6ff;
           cursor: pointer;
           font-weight: 400;
           font-size: 16px;
+          transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 
           @media (max-width: 480px) {
             padding: 10px 20px;
@@ -98,8 +128,26 @@
           }
 
           &:hover {
-            background-color: white;
+            border-color: #75cfff;
+            background-color: #75cfff;
             color: #0c0c1d;
+          }
+
+          &:focus-visible {
+            outline: 2px solid #75cfff;
+            outline-offset: 4px;
+          }
+        }
+
+        a:first-child button {
+          border-color: #75cfff;
+          background-color: #75cfff;
+          color: #0c0c1d;
+          box-shadow: 0 10px 24px rgba(43, 168, 225, 0.18);
+
+          &:hover {
+            border-color: #c4b5fd;
+            background-color: #c4b5fd;
           }
         }
       }
@@ -128,6 +176,21 @@
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 1;
+    isolation: isolate;
+    animation: portrait-orbit 9s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    will-change: transform;
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 13% 6%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(117, 207, 255, 0.22) 0%, rgba(129, 92, 246, 0.1) 40%, transparent 70%);
+      filter: blur(24px);
+      pointer-events: none;
+    }
 
     @media (max-width: 1024px) {
       position: static;
@@ -146,15 +209,34 @@
     }
   }
 
+  @keyframes portrait-orbit {
+    0%, 100% { transform: translate3d(0, -6px, 0); }
+    25% { transform: translate3d(10px, 0, 0); }
+    50% { transform: translate3d(0, 7px, 0); }
+    75% { transform: translate3d(-10px, 0, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .imageContainer {
+      animation: none;
+      will-change: auto;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+
   .slidingTextContainer {
     position: absolute;
     bottom: -120px;
     white-space: nowrap;
-    color: #ffffff09;
+    color: rgba(154, 213, 255, 0.055);
     font-weight: bold;
     font-size: 50vh;
     width: 50%;
     pointer-events: none;
+    z-index: 1;
 
     @media (max-width: 768px) {
       font-size: 30vh;
@@ -162,6 +244,12 @@
 
     @media (max-width: 480px) {
       font-size: 20vh;
+    }
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    &::after {
+      display: none;
     }
   }
 }

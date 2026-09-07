@@ -13,9 +13,10 @@
 
   h1 {
     font-size: 90px;
-    margin-bottom: 270px;
+    margin-bottom: 330px;
     color: white;
     text-align: center;
+    margin-right: 50px;
     z-index: 4;
 
     @media (max-width: 1024px) {
@@ -24,12 +25,13 @@
 
     @media (max-width: 738px) {
       font-size: 50px;
-      margin-bottom: 150px;
+      margin-bottom: 250px;
+      margin-left: 10%;
     }
 
     @media (max-width: 480px) {
       font-size: 36px;
-      margin-bottom: 120px;
+      margin-bottom: 250px;
     }
   }
 
@@ -51,23 +53,23 @@
 
   .planets {
     z-index: 2;
-    margin-bottom: 1000px;
+    margin-bottom: 1100px;
     background-image: url("/sun.png");
     @media (max-width: 738px) {
       background-size: contain;
       background-image: 50%;
-      margin-bottom: 370%;
+      margin-bottom: 570%;
       background-repeat: no-repeat;
     }
   }
 
   .stars {
     z-index: 1;
-    margin-right: 1580px;
+    margin-right: 2200px;
     margin-bottom: 50px;
     background-image: url("/stars.png");
     @media (max-width: 738px) {
-      margin-left: 1000px;
+      margin-left: 1650px;
     }
   }
 }

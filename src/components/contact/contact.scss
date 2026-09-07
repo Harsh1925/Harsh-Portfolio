@@ -1,17 +1,19 @@
 @use "../../app.scss" as *;
 
 .contact {
-  max-width: 1366px;
+  --accent: #75cfff;
+  --line: rgba(190, 205, 238, 0.18);
+  max-width: 1440px;
   margin: auto;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: clamp(44px, 7vw, 110px);
   padding: 5vh 5vw;
   flex-wrap: wrap;
 
   @media (max-width: 1024px) {
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
     padding: 6vh 4vw;
   }
 
@@ -28,8 +30,10 @@
     }
 
     h1 {
-      font-size: 80px;
-      line-height: 80px;
+      font-family: "Archivo", "DM Sans", sans-serif;
+      font-size: clamp(52px, 5.5vw, 78px);
+      line-height: .98;
+      letter-spacing: -.04em;
 
       @media (max-width: 768px) {
         font-size: 50px;
@@ -42,65 +46,80 @@
       }
     }
 
-    h2 {
-      font-size: 24px;
-    }
+    .item { padding-bottom: 15px; border-bottom: 1px solid var(--line); }
 
-    span {
-      font-size: 18px;
-      font-weight: 300;
-    }
+    h2 { margin: 0 0 6px; color: var(--accent); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+
+    span, a { color: #f4f7ff; font-size: 17px; font-weight: 400; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    a:focus-visible { outline: 2px solid white; outline-offset: 4px; }
   }
 
   .formContainer {
     flex: 1;
     position: relative;
     width: 100%;
-    display: flex;
-    justify-content: center;
+    min-height: 455px;
+    display: grid;
+    place-items: center;
 
     .phoneSvg {
-      stroke: rgb(255, 208, 0);
+      stroke: var(--accent);
       position: absolute;
-      top: 0;
-      left: 0;
-      margin: 60px;
-      z-index: -1;
-      opacity: 0.3;
+      top: calc(50% - 150px);
+      left: calc(50% - 150px);
+      z-index: 1;
+      color: var(--accent);
+      margin: 0;
+      opacity: 0;
+      pointer-events: none;
     }
 
     form {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 13px;
       width: 100%;
       max-width: 500px;
-      margin-top: 60px;
+      margin: 0;
+      padding: clamp(22px, 3vw, 34px);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(18, 20, 42, .72);
+      position: relative;
+      z-index: 2;
 
       input,
       textarea {
-        padding: 15px 20px;
-        background-color: transparent;
-        border: 1px solid white;
-        color: white;
-        border-radius: 5px;
-        font-size: 16px;
-        resize: vertical;
+        padding: 14px 16px;
+        background-color: rgba(7, 9, 24, .68);
+        border: 1px solid var(--line);
+        color: #f4f7ff;
+        border-radius: .375rem;
+        font-size: 15px;
+        resize: none;
+        transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
+
+        &::placeholder { color: #afb8ca; }
+        &:focus { border-color: var(--accent); outline: none; background-color: rgba(10, 14, 32, .9); box-shadow: 0 0 0 3px rgba(117, 207, 255, .13); }
       }
 
       button {
-        padding: 15px;
-        background-color: orange;
+        margin-top: 5px;
+        padding: 14px;
+        background-color: var(--accent);
         color: #0c0c1d;
-        border: none;
+        border: 1px solid var(--accent);
         font-weight: 600;
         font-size: 16px;
         cursor: pointer;
-        border-radius: 5px;
-        transition: background-color 0.3s;
+        border-radius: .375rem;
+        transition: background-color .2s ease, color .2s ease, transform .2s ease;
 
         &:hover {
-          background-color: darkorange;
+          background-color: transparent;
+          color: var(--accent);
+          transform: translateY(-2px);
         }
       }
 
@@ -109,12 +128,17 @@
         font-size: 14px;
         font-weight: 500;
         margin-top: -10px;
-        color: green;
+        color: var(--accent);
 
         &.error {
-          color: red;
+          color: #f4f7ff;
         }
       }
     }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .formContainer .phoneSvg { display: none; }
+    .formContainer form { transition: none; }
   }
 }

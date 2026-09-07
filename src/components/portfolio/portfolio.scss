@@ -2,15 +2,17 @@
 
 .portfolio {
   position: relative;
+  --accent: #75cfff;
+  --line: rgba(190, 205, 238, 0.18);
 
   .progress {
     position: sticky;
     top: 0;
     left: 0;
-    padding-top: 20px;
+    padding: 18px 5vw 12px;
     text-align: center;
-    color: orange;
-    font-size: 36px;
+    color: var(--accent);
+    font-size: 32px;
     background: #0c0c1d;
     z-index: 1;
 
@@ -20,17 +22,17 @@
     }
 
     .progressBar {
-      height: 10px;
-      background-color: white;
-      margin-top: 10px;
-      border-radius: 5px;
+      height: 3px;
+      background-color: var(--accent);
+      margin-top: 12px;
+      border-radius: 3px;
     }
   }
 
   section {
     height: auto;
     min-height: calc(100vh - 100px);
-    padding: 6vh 5vw;
+    padding: 5vh 5vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,14 +42,14 @@
     width: 100%;
 
     .wrapper {
-      max-width: 1206px;
-      max-width: 1200px;
+      max-width: 1280px;
       margin: auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      margin-top: 16vh;
+      margin-top: 10vh;
+      gap: clamp(32px, 5vw, 72px);
 
       @media (max-width: 768px) {
         flex-direction: column;
@@ -57,7 +59,11 @@
       .imageContainer {
         flex: 1;
         min-width: 300px;
-        max-width: 600px;
+        max-width: 620px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #12142a;
 
         @media (max-width: 738px) {
           width: 100%;
@@ -65,10 +71,16 @@
         }
 
         img {
-          width: 80%;
-          height: 100%;
+          width: 100%;
+          height: auto;
+          aspect-ratio: 4 / 3;
           object-fit: cover;
-          margin-top: 50px;
+          margin-top: 0;
+          transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+
+          &:hover {
+            transform: scale(1.03);
+          }
 
           @media (max-width: 738px) {
             object-fit: contain;
@@ -80,7 +92,7 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 22px;
 
         @media (max-width: 738px) {
           transform: none !important;
@@ -90,40 +102,60 @@
         }
 
         h2 {
-          font-size: 50px;
+          font-size: clamp(40px, 4vw, 54px);
           max-width: 500px;
+          letter-spacing: -0.035em;
+          line-height: 1.02;
           @media (max-width: 768px) {
             font-size: 32px;
           }
         }
 
         p {
-          color: gray;
-          font-size: 20px;
+          color: #b7c1d5;
+          font-size: 18px;
+          line-height: 1.55;
           max-width: 580px;
           @media (max-width: 738px) {
             font-size: 16px;
           }
         }
 
-        button {
-          background-color: orange;
-          border: none;
-          border-radius: 10px;
-          padding: 12px 20px;
-          font-weight: bold;
-          width: 200px;
-          cursor: pointer;
-          transition: background-color 0.3s;
+        .project-brief {
+          width: min(100%, 580px);
+          padding: 16px 0 0;
+          border-top: 1px solid var(--line);
+        }
 
-          a {
-            color: #0c0c1d;
-            text-decoration: none;
-          }
+        .project-stack {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 6px;
 
-          &:hover {
-            background-color: darkorange;
-          }
+          > span { margin-right: 4px; color: var(--accent); font-size: 11px; font-weight: 700; }
+          em { padding: 4px 7px; border: 1px solid var(--line); border-radius: 4px; color: #d7ebf8; font-size: 10px; font-style: normal; line-height: 1; }
+        }
+
+        .project-highlights { display: grid; gap: 7px; margin: 14px 0 0; padding: 0; list-style: none; }
+        .project-highlights li { display: flex; align-items: flex-start; gap: 8px; color: #b7c1d5; font-size: 12px; line-height: 1.38; }
+        .project-highlights svg { flex: none; margin-top: 1px; color: var(--accent); font-size: 14px; }
+        .project-outcome { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--line); color: #e6f3ff; font-size: 12px; font-weight: 700; line-height: 1.42; }
+
+        .project-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 11px 14px;
+          border: 1px solid var(--accent);
+          border-radius: 6px;
+          color: var(--accent);
+          font-size: 13px;
+          font-weight: 700;
+          transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+
+          &:hover { background-color: var(--accent); color: #0c0c1d; transform: translateY(-2px); }
+          &:focus-visible { outline: 2px solid white; outline-offset: 4px; }
         }
       }
     }

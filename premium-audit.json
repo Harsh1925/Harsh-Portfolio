@@ -1,0 +1,50 @@
+{
+  "findings": [
+    {
+      "category": "violation",
+      "file": "src/components/contact/Contact.jsx",
+      "line": 129,
+      "message": "Enabled literal button has no detectable action or submit behavior.",
+      "remediation": "Connect the button to a real action, make it a submit button, or disable/remove it.",
+      "ruleId": "affordance.actionless-button",
+      "severity": "error"
+    },
+    {
+      "category": "violation",
+      "file": "src/components/portfolio/Portfolio.jsx",
+      "line": 60,
+      "message": "Enabled literal button has no detectable action or submit behavior.",
+      "remediation": "Connect the button to a real action, make it a submit button, or disable/remove it.",
+      "ruleId": "affordance.actionless-button",
+      "severity": "error"
+    },
+    {
+      "category": "violation",
+      "file": "src/components/navbar/Navbar.jsx",
+      "line": 24,
+      "message": "Empty hash links look actionable but have no destination.",
+      "remediation": "Use a real route/action or render non-interactive text.",
+      "ruleId": "affordance.empty-href",
+      "severity": "error"
+    },
+    {
+      "category": "violation",
+      "file": "src/components/contact/Contact.jsx",
+      "line": 128,
+      "message": "Literal product textarea does not show evidence of the canonical resize-none rule.",
+      "remediation": "Use the shared Textarea owner or apply resize-none/resize: none with adequate height or auto-grow behavior.",
+      "ruleId": "form.textarea-resize-missing",
+      "severity": "error"
+    }
+  ],
+  "mode": "strict",
+  "projectRoot": "/Users/harshmodi/Developer/GitHub/animated-portfolio",
+  "schemaVersion": 1,
+  "summary": {
+    "errors": 4,
+    "total": 4,
+    "unresolved": 0,
+    "violations": 4,
+    "warnings": 0
+  }
+}
